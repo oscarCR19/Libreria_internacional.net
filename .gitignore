@@ -1,1 +1,7 @@
 .vs
+**/.config
+**/.cache
+**/.csproj
+bin
+obj
+Properties
