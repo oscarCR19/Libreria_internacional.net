@@ -38,7 +38,7 @@
              <!--logo-->
         <div>
             <div class="row">
-                <div class="column" style="float: left; width: 85%;">
+                <div class="column" style="float: left; width: 83%;">
                     <div style="margin-left: 20px">
                         <a class="logo" href="Inicio.aspx">
                             <img src="/Assets/Logo/LOGO-LI-01.png" alt="" width="170" height="64"/>
@@ -46,13 +46,13 @@
                     </div>
                 </div>
                 <!--Seccion de saludo y cart shoppin-->
-                <div class="column" style="float:right ; width: 15%;">
+                <div class="column" style="float:right ; width: 17%;">
                     <div">
-                <label for="">Bienvenido don Oscar</label>
-                <a href="MiCarrito.aspx" style="text-decoration:none ;">
-                <i class="fa" style="font-size:45px; color: blue;border-radius: 10px; ">&#xf07a;</i>
+                
+                <label for="">No se registra ningun usuario </label>
+                
+                <button class="fa" type="button" style="font-size:45px; color: blue;border-radius: 10px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">&#xf07a;</button>
                 <span class='badge badge-warning' id='lblCartCount'> 5 </span>
-                </a>
             </div>
                 </div>
 
@@ -66,7 +66,7 @@
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link " id="v-pills-home-tab" href="Inicio.aspx" role="tab" aria-controls="v-pills-home" aria-selected="true">Inicio</a>
                             <a class="nav-link active" id="v-pills-profile-tab" href="Perfil.aspx" role="tab" aria-controls="v-pills-profile" aria-selected="false">Perfil</a>
-                            <a class="nav-link" id="v-pills-messages-tab"  href="MiCarrito.aspx" role="tab" aria-controls="v-pills-messages" aria-selected="false">Mi carrito</a>
+                            <a class="nav-link" id="v-pills-messages-tab"  href="Favoritos.aspx" role="tab" aria-controls="v-pills-messages" aria-selected="false">Favoritos</a>
                             <a class="nav-link" id="v-pills-settings-tab"  href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cerrar</a>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
@@ -77,6 +77,22 @@
                         </div>
                     </div>
                 </div>
+
+                <!--off canvas de cart shopping-->    
+                 
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="background-color:black"></button>
+                </div>
+                <div class="offcanvas-body">
+                    aqui van los libros que estan en mi carrito
+                </div>
+                </div>
+
+
+
                 <div class="column" style="float: right; width: 50%;">
                     <!--Espacio de trabajo-->
                     <label for="">hola mundo</label>
