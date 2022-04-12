@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libreria_internacional.net.Controladores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace Libreria_internacional.net.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Libros libros = new Libros();
+            repLibros.DataSource = libros.obtenerLibros();
+            repLibros.DataBind();
         }
     }
 }

@@ -158,19 +158,25 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        ...
+                          <div>
+                              <label for="textUser">Usuario</label>
+                                <input id="textUsuario" type="text">
+                                 <br />
+                                <label for="textPassword">Contraseña</label>
+                                <input id="textContrasena" type="password">
+                          </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
-                      </div>
+                          <button type="button" class="btn btn-primary">Ingresar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                     </div>
                     </div>
                   </div>
                 </div>
             
                     <!--menú lateral-->
             <div class="row">
-                <div class="column" style="float: left; width: 50%;">
+                <div class="column" style="float: left; width: 10%;">
                     <div style="width: 70px;">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="v-pills-home-tab" href="Inicio.aspx" role="tab" aria-controls="v-pills-home" aria-selected="true">Inicio</a>
@@ -186,9 +192,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="column" style="float: right; width: 50%;">
+                <div class="column" style="float: right; width: 90%;">
                     <!--Espacio de trabajo-->
-                    <label for="">hola mundo</label>
+                            <div class="container-fluid ml-3" style="margin-top: 1%">
+                    <div class="row">
+                        <asp:Repeater ID="repLibros" runat="server">
+                            <ItemTemplate>
+                                <div class="card" style="width: 18rem; margin-left: 2%; margin-top: 1%">
+                                    <img src="<%# Eval("Foto") %>" class="card-img-top" style="width:265px;height:230px" />
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%# Eval("ISBN") %></h5>
+                                        <p class="card-text"><%# Eval("Titulo") %></p>
+                                        <strong class="card-text">₡<%# Eval("Autor") %> / p</strong>
+                                        <hr />
+                                        <!--<a style="float: right" href="Reservar.aspx?codigo=" class="btn btn-primary">Reservar</a>-->
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
+
+                    
+
+
                 </div>
             </div>
             <hr />
