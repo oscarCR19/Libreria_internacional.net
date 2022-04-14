@@ -17,6 +17,8 @@ namespace Libreria_internacional.net.Controladores
             libroUno.Autor = "J.R.R Tolkien";
             libroUno.Titulo = "El Señor de los Anillos";
             libroUno.FechaPublicacion = "20/10/1995";
+            libroUno.Foto = "/Assets/Libros/El principito.jpg";
+            libroUno.Precio =  12500;
 
             libros.Add(libroUno);
 
@@ -25,7 +27,9 @@ namespace Libreria_internacional.net.Controladores
                 ISBN = "545512",
                 Titulo = "El principito",
                 Autor = "Antoine de Saint-Exupéry",
-                FechaPublicacion = "06/04/1943"
+                FechaPublicacion = "06/04/1943",
+                Foto = "/Assets/Libros/El principito.jpg",
+                Precio = 15315
 
             };
             Libro libro3 = new Libro()
@@ -33,7 +37,9 @@ namespace Libreria_internacional.net.Controladores
                 ISBN = "545512",
                 Titulo = "El principito",
                 Autor = "Antoine de Saint-Exupéry",
-                FechaPublicacion = "06/04/1943"
+                FechaPublicacion = "06/04/1943",
+                Foto="/Assets/Libros/El principito.jpg",
+                Precio=14775
 
             };
             Libro libro4 = new Libro()
@@ -41,7 +47,10 @@ namespace Libreria_internacional.net.Controladores
                 ISBN = "545512",
                 Titulo = "El principito",
                 Autor = "Antoine de Saint-Exupéry",
-                FechaPublicacion = "06/04/1943"
+                FechaPublicacion = "06/04/1943",
+                Foto = "/Assets/Libros/El principito.jpg",
+                Precio=13500
+               
 
             };
             Libro libro5 = new Libro()
@@ -49,7 +58,9 @@ namespace Libreria_internacional.net.Controladores
                 ISBN = "545512",
                 Titulo = "El principito",
                 Autor = "Antoine de Saint-Exupéry",
-                FechaPublicacion = "06/04/1943"
+                FechaPublicacion = "06/04/1943",
+                Foto = "/Assets/Libros/El principito.jpg",
+                Precio=14000
 
             };
             Libro libro6 = new Libro()
@@ -57,7 +68,9 @@ namespace Libreria_internacional.net.Controladores
                 ISBN = "545512",
                 Titulo = "El principito",
                 Autor = "Antoine de Saint-Exupéry",
-                FechaPublicacion = "06/04/1943"
+                FechaPublicacion = "06/04/1943",
+                Foto = "/Assets/Libros/El principito.jpg",
+                Precio=7500
 
             };
 

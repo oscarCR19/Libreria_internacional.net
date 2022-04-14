@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controladores\Libros.cs" />
+    <Compile Include="Controladores\Usuarios.cs" />
     <Compile Include="Modelos\Libro.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

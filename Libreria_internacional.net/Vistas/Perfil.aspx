@@ -28,12 +28,16 @@
     <form id="form1" runat="server">
         <div>
 
-            <div>
-            <div style="display: flexbox; text-align: right;">
-            <label style="margin-right: 10px ;" for="">Bienvenidos a Libreria Internacional</label>
-            <a href="">Ingresar</a>
-            <a href="">Registrarse</a>
-        </div>
+             <div id="divEncabezado" runat="server" style="display: flexbox; text-align: right;">
+                <label style="margin-right: 10px;" for="">Bienvenidos a Libreria Internacional</label>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIngresar">
+                    Ingresar
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegistrar">
+                    Registrar
+                </button>
+            </div>
+            
         <hr>
              <!--logo-->
         <div>
@@ -47,33 +51,99 @@
                 </div>
                 <!--Seccion de saludo y cart shoppin-->
                 <div class="column" style="float:right ; width: 17%;">
-                    <div">
+                    <div>
                 
-                <label for="">No se registra ningun usuario </label>
+                <label id="lblUser" runat="server" for=""> </label>
                 
                 <button class="fa" type="button" style="font-size:45px; color: blue;border-radius: 10px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">&#xf07a;</button>
-                <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+                <span class='badge badge-warning' id='lblCartCount'> 0 </span>
             </div>
                 </div>
 
             </div>
             <hr>
 
+
+             <!-- Modal Registrar -->
+            <!-- Button trigger modal -->
+
+            <div class="modal fade" id="modalRegistrar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="modalRegistrar">Registrar</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <h4>Ingrese los datos que se solicita a continuacion:
+                                </h4>
+                                <label for="textNombre">Nombre</label>
+                                <input id="textNombre" type="text">
+                                <br />
+                                <label for="textApellido">Apellido</label>
+                                <input id="textApellido" type="text">
+                                <br />
+                                <label for="textEmail">Email</label>
+                                <input id="textEmail" type="email">
+                                <br />
+                                <label for="textUsuario">Usuario</label>
+                                <input id="textUsuario" type="text">
+                                <br />
+                                <label for="textContrasena">Contraseña</label>
+                                <input id="textContrasena" type="password">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Registrar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Ingresar -->
+            <div class="modal fade" id="modalIngresar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalIngresar">Ingresar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <label>Usuario</label>
+                                <input id="txtUser" runat="server" type="text">
+                                <br />
+                                <label>Contraseña</label>
+                                <input id="txtPassword" runat="server" type="password">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnIngresar" runat="server" onserverclick="btnIngresar_ServerClick" >Ingresar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
              <!--menú lateral-->
             <div class="row">
-                <div class="column" style="float: left; width: 50%;">
+                <div class="column" style="float: left; width: 10%;">
                     <div style="width: 70px;">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link " id="v-pills-home-tab" href="Inicio.aspx" role="tab" aria-controls="v-pills-home" aria-selected="true">Inicio</a>
                             <a class="nav-link active" id="v-pills-profile-tab" href="Perfil.aspx" role="tab" aria-controls="v-pills-profile" aria-selected="false">Perfil</a>
-                            <a class="nav-link" id="v-pills-messages-tab"  href="Favoritos.aspx" role="tab" aria-controls="v-pills-messages" aria-selected="false">Favoritos</a>
-                            <a class="nav-link" id="v-pills-settings-tab"  href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cerrar</a>
+                            <!--<a class="nav-link" id="v-pills-messages-tab"  href="Favoritos.aspx" role="tab" aria-controls="v-pills-messages" aria-selected="false">Favoritos</a>-->
+                            <a class="nav-link" id="btnCerrar" runat="server" onserverclick="btnCerrar_ServerClick" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cerrar</a>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-Inicio-tab"></div>
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-Perfil-tab"></div>
                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-Favoritos-tab"></div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-Cerrar-tab"></div>
+                            <div class="tab-pane fade" id="v-pills-cerrar"  role="tabpanel" aria-labelledby="v-pills-Cerrar-tab"></div>
                         </div>
                     </div>
                 </div>
@@ -93,15 +163,25 @@
 
 
 
-                <div class="column" style="float: right; width: 50%;">
+                <div class="column" style="float: right; width: 90%;">
                     <!--Espacio de trabajo-->
-                    <label for="">hola mundo</label>
+                    <label id="lblUser2" runat="server" for=""></label>
+
+
+                    <div>
+                        Mis compras
+                    </div>
+                    <div>
+                        Mis favoritos
+                    </div>
+                    
                 </div>
             </div>
             <hr />
                    
             
         </div>
+            </div>
     </form>
 </body>
 </html>
