@@ -104,11 +104,19 @@
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                    <h5 id="offcanvasRightLabel">Mis facturas</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="background-color: black"></button>
                 </div>
                 <div class="offcanvas-body">
-                    aqui van los libros que estan en mi carrito
+                    <asp:Repeater ID="repLibrosCarro" runat="server">
+                        <ItemTemplate>
+                          <labe>
+                              hola
+                          </labe>
+                        
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <label id="lblPrueba" runat="server"></label>
                 </div>
             </div>
 
@@ -206,6 +214,8 @@
                     <!--Espacio de trabajo-->
                     <div class="container-fluid ml-3" style="margin-top: 1%">
                         <div class="row">
+                            
+                            <!--RepetidorUno-->
                             <asp:Repeater ID="repLibros" runat="server">
                                 <ItemTemplate>
                                     <div class="card" style="width: 18rem; margin-left: 2%; margin-top: 1%">
@@ -229,7 +239,46 @@
                                             <hr />
                                             <div class ="row">
                                                 <div class ="col" style="width:70%">
-                                                    <a id="btnComprar" runat="server" onserverclick="btnComprar_ServerClick" style="float: right;" class="btn btn-primary" >Agregar  carrito</a>
+                                                    <a id="btnComprar"  href="microServicios.aspx?isnb=<%# Eval("ISBN") %>&titulo= <%# Eval("Titulo")%>&autor=<%# Eval("Autor") %>
+                                                        &precio=<%# Eval("Precio") %>" style="float: right;" class="btn btn-primary" >Agregar  carrito</a>
+                                                </div>
+                                                
+                                                <div class ="col" style="width:30%">
+                                                    
+                                                <abbr title="Presionar para agregar a favoritos"><a id="btnFavoritos" runat="server" onserverclick="btnFavoritos_ServerClick" style="float: right" >
+                                                    <img src="/Assets/Iconos/nofavorito.png" alt="" /></a></abbr>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            
+                            <!--RepetidorDos-->
+                            <asp:Repeater ID="repLibros2" runat="server">
+                                <ItemTemplate>
+                                    <div class="card" style="width: 18rem; margin-left: 2%; margin-top: 1%">
+                                        <img src="<%# Eval("Foto") %>" class="card-img-top" style="width: 265px; height: 230px" />
+                                        <div class="card-body">
+                                             
+                                            <label>ISBN:</label>
+                                            <h5 class="card-title"><%# Eval("ISBN") %></h5>
+                                            <label>Titulo:</label>
+                                            <p class="card-text"><%# Eval("Titulo") %></p>
+                                            <label>Autor:</label>
+                                            <strong class="card-text"><%# Eval("Autor") %></strong>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Precio: </label>
+                                                </div>
+                                                <div class="col" style="margin-right:60px;">
+                                                    <h5 class="card-title">₡<%# Eval("Precio") %></h5>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class ="row">
+                                                <div class ="col" style="width:70%">
+                                                    <a id="btnComprar"  runat="server" onserverclick="btnComprar_ServerClick" style="float: right;" class="btn btn-primary" >Agregar  carrito</a>
                                                 </div>
                                                 <div class ="col" style="width:30%">
                                                     
@@ -241,23 +290,37 @@
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
+
+
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
             <hr />
 
+                 
 
-
-
-
-
-        </div>
-        </div>
+                    <!-- Modal de ir agregar a carito -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+</div>
+        
     </form>
 </body>
 </html>

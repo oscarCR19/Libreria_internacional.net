@@ -13,8 +13,9 @@ namespace Libreria_internacional.net.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           string session = Request.QueryString["session"];
-            if (session==null)
+            string session = Request.QueryString["session"];
+            string mensaje = Request.QueryString["mensaje"];
+            if (session == null)
             {
                 loginInactivo();
             }
@@ -24,8 +25,27 @@ namespace Libreria_internacional.net.Vistas
             }
 
             Libros libros = new Libros();
+            List <Libro> mostrarLibros= libros.obtenerLibros();
+            
+
             repLibros.DataSource = libros.obtenerLibros();
             repLibros.DataBind();
+
+            repLibros2.DataSource = libros.obtenerLibros();
+            repLibros2.DataBind();
+
+            
+
+            if (mensaje== "Se agregó al carrito con éxito")
+            {
+                divAlert.Attributes.Add("class", "alert alert-success");
+                  divAlert.Attributes.Remove("hidden");
+                   lblAlert.InnerText = mensaje;
+            }
+            
+
+
+
 
         }
 
@@ -33,7 +53,11 @@ namespace Libreria_internacional.net.Vistas
         {
             btnCerrar.Attributes.Add("hidden", "hidden");
             lblUser.InnerText = "No hay usuario registrado";
-            
+            repLibros.Visible = false;
+            repLibros2.Visible = true;
+           
+
+
         }
 
         public void loginActivo()
@@ -42,6 +66,14 @@ namespace Libreria_internacional.net.Vistas
             lblUser.InnerText = "Bienvenido "+ usuario.User;
             btnCerrar.Attributes.Remove("hidden");
             divEncabezado.Attributes.Add("hidden", "hidden");
+            repLibros.Visible = true;
+            repLibros2.Visible = false;
+
+            LibrosPorUsuarios librosCarro = new LibrosPorUsuarios();
+            repLibrosCarro.DataSource=librosCarro.getListCarrito();
+            repLibrosCarro.DataBind();
+            lblPrueba.InnerText=librosCarro.getListCarrito().Count().ToString();
+
         }
 
         protected void btnIngresar_ServerClick(object sender, EventArgs e)
@@ -79,6 +111,7 @@ namespace Libreria_internacional.net.Vistas
                 divAlert.Attributes.Remove("hidden");
                 lblAlert.InnerText = "Debes de estar loguedo para poder comprar";
             }
+            
         }
 
         protected void btnFavoritos_ServerClick(object sender, EventArgs e)
