@@ -70,9 +70,14 @@ namespace Libreria_internacional.net.Vistas
             repLibros2.Visible = false;
 
             LibrosPorUsuarios librosCarro = new LibrosPorUsuarios();
-            repLibrosCarro.DataSource=librosCarro.getListCarrito();
+            repLibrosCarro.DataSource=librosCarro.getListCarrito(usuario);
             repLibrosCarro.DataBind();
-            lblPrueba.InnerText=librosCarro.getListCarrito().Count().ToString();
+            
+            lblCartCount.InnerText=librosCarro.getListCarrito(usuario).Count().ToString();
+
+            
+            //manejos de fecha
+            lblFecha.InnerText = Convert.ToString(DateTime.Now.ToString("dd/MM/yyyy hh:mm:ssss"));
 
         }
 

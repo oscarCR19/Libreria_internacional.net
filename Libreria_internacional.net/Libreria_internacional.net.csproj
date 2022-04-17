@@ -89,26 +89,40 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Vistas\microServicios.aspx" />
+    <Content Include="Vistas\AgregarCarro.aspx" />
+    <Content Include="Vistas\AgregarFacturas.aspx" />
     <Content Include="Vistas\Inicio.aspx" />
     <Content Include="Vistas\Favoritos.aspx" />
     <Content Include="Vistas\Perfil.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\FacturasLibros.cs" />
     <Compile Include="Controladores\Libros.cs" />
     <Compile Include="Controladores\LibrosPorUsuarios.cs" />
+    <Compile Include="Controladores\Paises.cs" />
     <Compile Include="Controladores\Usuarios.cs" />
+    <Compile Include="DB\DataBase.cs" />
+    <Compile Include="DB\DbPaises.cs" />
+    <Compile Include="Modelos\FacturaLibro.cs" />
     <Compile Include="Modelos\Libro.cs" />
     <Compile Include="Modelos\LibroPorUsuario.cs" />
+    <Compile Include="Modelos\Pais.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vistas\microServicios.aspx.cs">
-      <DependentUpon>microServicios.aspx</DependentUpon>
+    <Compile Include="Vistas\AgregarCarro.aspx.cs">
+      <DependentUpon>AgregarCarro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\microServicios.aspx.designer.cs">
-      <DependentUpon>microServicios.aspx</DependentUpon>
+    <Compile Include="Vistas\AgregarCarro.aspx.designer.cs">
+      <DependentUpon>AgregarCarro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\AgregarFacturas.aspx.cs">
+      <DependentUpon>AgregarFacturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\AgregarFacturas.aspx.designer.cs">
+      <DependentUpon>AgregarFacturas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -165,7 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="SQLscritps\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

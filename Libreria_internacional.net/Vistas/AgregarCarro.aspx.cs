@@ -21,7 +21,7 @@ namespace Libreria_internacional.net.Vistas
 
             LibrosPorUsuarios factura = new LibrosPorUsuarios();
             factura.setListCarrito(isnb,titulo,autor,Convert.ToDouble(precio),usuario.User);
-            //Response.Redirect("Inicio.aspx?mensaje=Se agregó al carrito con éxito");
+            Response.Redirect("Inicio.aspx?mensaje=Se agregó al carrito con éxito");
 
         }
     }

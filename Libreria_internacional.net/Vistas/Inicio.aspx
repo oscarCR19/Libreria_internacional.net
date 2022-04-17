@@ -26,11 +26,7 @@
 </head>
 <body style="background-color: #f5f6fa; width: auto">
     <form id="form1" runat="server">
-
-
-
-
-        <div>
+                <div>
             <div id="divEncabezado" runat="server" style="display: flexbox; text-align: right;">
                 <label style="margin-right: 10px;" for="">Bienvenidos a Libreria Internacional</label>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIngresar">
@@ -50,15 +46,16 @@
                                 <img src="/Assets/Logo/LOGO-LI-01.png" alt="" width="170" height="64" />
                             </a>
                         </div>
+                        <label runat="server" id="lblFecha">hola</label>
                     </div>
                     <!--Seccion de saludo y cart shoppin-->
 
                     <div class="column" style="float: right; width: 17%;">
                         <div>
-                             <label id="lblUser" runat="server" for=""> </label>
-                
-                <button class="fa" type="button" style="font-size:45px; color: blue;border-radius: 10px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">&#xf07a;</button>
-                <span class='badge badge-warning' id='lblCartCount'> 0 </span>
+                            <label id="lblUser" runat="server" for=""></label>
+
+                            <button class="fa" type="button" style="font-size: 45px; color: blue; border-radius: 10px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">&#xf07a;</button>
+                            <span class='badge badge-warning' id='lblCartCount' runat="server">0 </span>
                         </div>
                     </div>
 
@@ -68,7 +65,7 @@
             </div>
             <hr>
             <!--Carusel-->
-            <div class="container-sm" style="margin-left:30%;">
+            <div class="container-sm" style="margin-left: 30%;">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -76,7 +73,7 @@
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active" >
+                        <div class="carousel-item active">
                             <img class="d-block w-50" src="/Assets/carrusel/banner1.jpg" alt="First slide">
                         </div>
                         <div class="carousel-item">
@@ -110,13 +107,43 @@
                 <div class="offcanvas-body">
                     <asp:Repeater ID="repLibrosCarro" runat="server">
                         <ItemTemplate>
-                          <labe>
-                              hola
-                          </labe>
-                        
+
+                            <div class="list-group">
+                                <abbr style="text-decoration: none" title="Presiona para realizar la compra">
+                                    <div class="list-group">
+                                        <a href="AgregarFacturas.aspx" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Factura:</h5>
+                                                <label style="margin-right: 90px"><%#Eval("Id") %></label>
+                                                <small><%#Eval("DiasTranscurridos") %> days ago</small>
+                                            </div>
+
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">ISBN:</h5>
+                                                <label style="margin-right: 200px"><%#Eval("ISBN") %></label>
+                                            </div>
+
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Titulo:</h5>
+                                                <label style="margin-right: 160px"><%#Eval("Titulo") %></label>
+                                            </div>
+
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Precio:</h5>
+                                                <label style="margin-right: 200px">₡<%#Eval("Precio") %></label>
+                                            </div>
+                                        </a>
+
+
+                                    </div>
+                                </abbr>
+
+                            </div>
+
+
                         </ItemTemplate>
                     </asp:Repeater>
-                    <label id="lblPrueba" runat="server"></label>
+
                 </div>
             </div>
 
@@ -204,24 +231,24 @@
                 </div>
                 <div class="column" style="float: right; width: 90%;">
                     <!--Alerta-->
-                    <div id="divAlert" hidden="hidden"  role="alert" runat="server">
-                   <label id="lblAlert" runat="server">hola</label>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
+                    <div id="divAlert" hidden="hidden" role="alert" runat="server">
+                        <label id="lblAlert" runat="server">hola</label>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
                     <!--Espacio de trabajo-->
                     <div class="container-fluid ml-3" style="margin-top: 1%">
                         <div class="row">
-                            
+
                             <!--RepetidorUno-->
                             <asp:Repeater ID="repLibros" runat="server">
                                 <ItemTemplate>
                                     <div class="card" style="width: 18rem; margin-left: 2%; margin-top: 1%">
                                         <img src="<%# Eval("Foto") %>" class="card-img-top" style="width: 265px; height: 230px" />
                                         <div class="card-body">
-                                             
+
                                             <label>ISBN:</label>
                                             <h5 class="card-title"><%# Eval("ISBN") %></h5>
                                             <label>Titulo:</label>
@@ -232,35 +259,37 @@
                                                 <div class="col">
                                                     <label>Precio: </label>
                                                 </div>
-                                                <div class="col" style="margin-right:60px;">
+                                                <div class="col" style="margin-right: 60px;">
                                                     <h5 class="card-title">₡<%# Eval("Precio") %></h5>
                                                 </div>
                                             </div>
                                             <hr />
-                                            <div class ="row">
-                                                <div class ="col" style="width:70%">
-                                                    <a id="btnComprar"  href="microServicios.aspx?isnb=<%# Eval("ISBN") %>&titulo= <%# Eval("Titulo")%>&autor=<%# Eval("Autor") %>
-                                                        &precio=<%# Eval("Precio") %>" style="float: right;" class="btn btn-primary" >Agregar  carrito</a>
+                                            <div class="row">
+                                                <div class="col" style="width: 70%">
+                                                    <a id="btnComprar" href="microServicios.aspx?isnb=<%# Eval("ISBN") %>&titulo= <%# Eval("Titulo")%>&autor=<%# Eval("Autor") %>
+                                                        &precio=<%# Eval("Precio") %>"
+                                                        style="float: right;" class="btn btn-primary">Agregar  carrito</a>
                                                 </div>
-                                                
-                                                <div class ="col" style="width:30%">
-                                                    
-                                                <abbr title="Presionar para agregar a favoritos"><a id="btnFavoritos" runat="server" onserverclick="btnFavoritos_ServerClick" style="float: right" >
-                                                    <img src="/Assets/Iconos/nofavorito.png" alt="" /></a></abbr>
+
+                                                <div class="col" style="width: 30%">
+
+                                                    <abbr title="Presionar para agregar a favoritos">
+                                                        <a id="btnFavoritos" runat="server" onserverclick="btnFavoritos_ServerClick" style="float: right">
+                                                            <img src="/Assets/Iconos/nofavorito.png" alt="" /></a></abbr>
                                                 </div>
-                                            </div> 
+                                            </div>
                                         </div>
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
-                            
+
                             <!--RepetidorDos-->
                             <asp:Repeater ID="repLibros2" runat="server">
                                 <ItemTemplate>
                                     <div class="card" style="width: 18rem; margin-left: 2%; margin-top: 1%">
                                         <img src="<%# Eval("Foto") %>" class="card-img-top" style="width: 265px; height: 230px" />
                                         <div class="card-body">
-                                             
+
                                             <label>ISBN:</label>
                                             <h5 class="card-title"><%# Eval("ISBN") %></h5>
                                             <label>Titulo:</label>
@@ -271,21 +300,22 @@
                                                 <div class="col">
                                                     <label>Precio: </label>
                                                 </div>
-                                                <div class="col" style="margin-right:60px;">
+                                                <div class="col" style="margin-right: 60px;">
                                                     <h5 class="card-title">₡<%# Eval("Precio") %></h5>
                                                 </div>
                                             </div>
                                             <hr />
-                                            <div class ="row">
-                                                <div class ="col" style="width:70%">
-                                                    <a id="btnComprar"  runat="server" onserverclick="btnComprar_ServerClick" style="float: right;" class="btn btn-primary" >Agregar  carrito</a>
+                                            <div class="row">
+                                                <div class="col" style="width: 70%">
+                                                    <a id="btnComprar" runat="server" onserverclick="btnComprar_ServerClick" style="float: right;" class="btn btn-primary">Agregar  carrito</a>
                                                 </div>
-                                                <div class ="col" style="width:30%">
-                                                    
-                                                <abbr title="Presionar para agregar a favoritos"><a id="btnFavoritos" runat="server" onserverclick="btnFavoritos_ServerClick" style="float: right" >
-                                                    <img src="/Assets/Iconos/nofavorito.png" alt="" /></a></abbr>
+                                                <div class="col" style="width: 30%">
+
+                                                    <abbr title="Presionar para agregar a favoritos">
+                                                        <a id="btnFavoritos" runat="server" onserverclick="btnFavoritos_ServerClick" style="float: right">
+                                                            <img src="/Assets/Iconos/nofavorito.png" alt="" /></a></abbr>
                                                 </div>
-                                            </div> 
+                                            </div>
                                         </div>
                                     </div>
                                 </ItemTemplate>
@@ -298,29 +328,29 @@
             </div>
             <hr />
 
-                 
 
-                    <!-- Modal de ir agregar a carito -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
+
+            <!-- Modal de ir agregar a carito -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
-                          </div>
-                          <div class="modal-body">
-                          </div>
-                          <div class="modal-footer">
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
                         </div>
-                      </div>
                     </div>
-</div>
-        
+                </div>
+            </div>
+        </div>
+
     </form>
 </body>
 </html>

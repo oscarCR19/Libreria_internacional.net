@@ -42,6 +42,15 @@ namespace Libreria_internacional.net.Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEncabezado;
 
         /// <summary>
+        /// Control lblFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFecha;
+
+        /// <summary>
         /// Control lblUser.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace Libreria_internacional.net.Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblUser;
 
         /// <summary>
+        /// Control lblCartCount.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCartCount;
+
+        /// <summary>
         /// Control repLibrosCarro.
         /// </summary>
         /// <remarks>
@@ -58,15 +76,6 @@ namespace Libreria_internacional.net.Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repLibrosCarro;
-
-        /// <summary>
-        /// Control lblPrueba.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrueba;
 
         /// <summary>
         /// Control txtUser.
