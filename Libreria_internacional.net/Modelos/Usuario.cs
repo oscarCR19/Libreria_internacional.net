@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Libreria_internacional.net.Modelos
 {
+    //Para darle forma a usuarios
     public class Usuario
     {
         public string User { get; set; }

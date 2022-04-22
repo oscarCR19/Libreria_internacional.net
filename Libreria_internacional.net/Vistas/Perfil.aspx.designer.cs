@@ -51,6 +51,15 @@ namespace Libreria_internacional.net.Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblUser;
 
         /// <summary>
+        /// Control lblCartCount.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCartCount;
+
+        /// <summary>
         /// Control txtUser.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,33 @@ namespace Libreria_internacional.net.Vistas
         protected global::System.Web.UI.HtmlControls.HtmlAnchor btnCerrar;
 
         /// <summary>
+        /// Control repLibrosCarro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repLibrosCarro;
+
+        /// <summary>
+        /// Control divAlert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAlert;
+
+        /// <summary>
+        /// Control lblAlert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAlert;
+
+        /// <summary>
         /// Control lblUser2.
         /// </summary>
         /// <remarks>
@@ -94,5 +130,41 @@ namespace Libreria_internacional.net.Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblUser2;
+
+        /// <summary>
+        /// Control divEspacioTrabajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEspacioTrabajo;
+
+        /// <summary>
+        /// Control repLibrosFavoritos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repLibrosFavoritos;
+
+        /// <summary>
+        /// Control repfacturasPendientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repfacturasPendientes;
+
+        /// <summary>
+        /// Control repFacturasEntragadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repFacturasEntragadas;
     }
 }

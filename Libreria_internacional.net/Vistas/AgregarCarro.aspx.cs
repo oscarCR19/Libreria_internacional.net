@@ -13,15 +13,46 @@ namespace Libreria_internacional.net.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string accion = Request.QueryString["accion"];
+            int id = Convert.ToInt32(Request.QueryString["id"]);
+            string sitio = Request.QueryString["sitio"];
             string isnb = Request.QueryString["isnb"];
             string titulo = Request.QueryString["titulo"];
             string autor = Request.QueryString["autor"];
             string precio = Request.QueryString["precio"];
-           Usuario usuario = (Usuario)Session["Login"];
+            string foto = Request.QueryString["foto"];
+            Usuario usuario = (Usuario)Session["Login"];
+            Usuarios email=new Usuarios();
+            if (accion == "borraCarrito")
+            {
+                LibrosPorCarritos borrar = new LibrosPorCarritos();
+                borrar.quitarLibroCarrito(id);
+                Response.Redirect(sitio);
+            }
+            else
+            {
+                LibrosPorCarritos factura = new LibrosPorCarritos();
+                LibroPorCarrito libro = new LibroPorCarrito()
+                {
+                    ISBN = isnb,
+                    Titulo = titulo,
+                    Autor = autor,
+                    Precio = Convert.ToDouble(precio),
+                    Foto = foto,
+                    Email = email.getEmail(usuario).ToString(),
+                    Estado = "Pago Pendiente"
+                };
 
-            LibrosPorUsuarios factura = new LibrosPorUsuarios();
-            factura.setListCarrito(isnb,titulo,autor,Convert.ToDouble(precio),usuario.User);
-            Response.Redirect("Inicio.aspx?mensaje=Se agregó al carrito con éxito");
+                factura.setListCarrito(libro, usuario);
+                Response.Redirect("Inicio.aspx?mensaje=Se agregó al carrito con éxito");
+            }
+
+            
+
+            
+
+           
+            
 
         }
     }

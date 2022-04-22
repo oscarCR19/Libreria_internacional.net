@@ -13,6 +13,7 @@ namespace Libreria_internacional.net.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string mensaje = Request.QueryString["mensaje"];
             if ((Usuario)Session["Login"] != null)
             {
                 loginActivo();
@@ -22,6 +23,13 @@ namespace Libreria_internacional.net.Vistas
                 loginInactivo();
             }
 
+            if (mensaje == "Se quitó libro de favoritos" || mensaje== "Se marcó factura como entregada")
+            {
+                divAlert.Attributes.Add("class", "alert alert-success");
+                divAlert.Attributes.Remove("hidden");
+                lblAlert.InnerText = mensaje;
+            }
+            
         }
 
 
@@ -30,6 +38,7 @@ namespace Libreria_internacional.net.Vistas
             btnCerrar.Attributes.Add("hidden", "hidden");
             lblUser.InnerText = "No hay usuario registrado";
             lblUser2.InnerText = "Debe ingresar sección para ver el contenido";
+            divEspacioTrabajo.Visible = false;
 
         }
 
@@ -39,6 +48,42 @@ namespace Libreria_internacional.net.Vistas
             lblUser.InnerText = "Bienvenido " + usuario.User;
             btnCerrar.Attributes.Remove("hidden");
             divEncabezado.Attributes.Add("hidden", "hidden");
+
+            
+            LibrosPorCarritos librosCarro = new LibrosPorCarritos(); ;
+            repLibrosCarro.DataSource = librosCarro.getListCarrito(usuario);
+            repLibrosCarro.DataBind();
+            lblCartCount.InnerText = librosCarro.getListCarrito(usuario).Count().ToString();
+
+            FacturasPorUsuarios facturasPendientes = new FacturasPorUsuarios();
+            List<FacturaUsuario> facturasPend = new List<FacturaUsuario>();//Nos traemos todo lo que hay en la lista de facturas por usuario
+            FacturaUsuario factura =new FacturaUsuario();
+            factura.Estado = "Pendiente";
+            facturasPend = facturasPendientes.getFacturaCarrito(usuario,factura);
+            
+            
+            //facturas que estan pendientes de entrega
+            repfacturasPendientes.DataSource = facturasPend;
+            repfacturasPendientes.DataBind();
+
+            FacturasPorUsuarios FacturasEntregadas = new FacturasPorUsuarios();
+            List<FacturaUsuario> facturasEntregadas = new List<FacturaUsuario>();//Nos traemos todo lo que hay en la lista de facturas por usuario
+            FacturaUsuario factura2 = new FacturaUsuario();
+            factura2.Estado = "Entregado";
+            facturasEntregadas = FacturasEntregadas.getFacturaCarrito(usuario, factura2);
+
+            //facturas que ya se entregaron
+            repFacturasEntragadas.DataSource= facturasEntregadas;
+            repFacturasEntragadas.DataBind();
+
+            //favoritos
+            Libros libros = new Libros();
+            List<Libro> mostrarLibros = libros.ObtenerFavoritos(usuario);
+
+
+            repLibrosFavoritos.DataSource = libros.ObtenerFavoritos(usuario);
+            repLibrosFavoritos.DataBind();
+
         }
 
         protected void btnIngresar_ServerClick(object sender, EventArgs e)

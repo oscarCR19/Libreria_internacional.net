@@ -11,7 +11,7 @@ namespace Libreria_internacional.net.Vistas
 {
 
 
-    public partial class AgregarFacturas
+    public partial class WebForm1
     {
 
         /// <summary>
@@ -51,76 +51,58 @@ namespace Libreria_internacional.net.Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEmail;
 
         /// <summary>
-        /// Control selectPais.
+        /// Control lblPais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect selectPais;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPais;
 
         /// <summary>
-        /// Control btnBuscarProv.
+        /// Control lblProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnBuscarProv;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblProvincia;
 
         /// <summary>
-        /// Control selectProvincia.
+        /// Control lblDirrecion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect selectProvincia;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDirrecion;
 
         /// <summary>
-        /// Control lbDirrecion.
+        /// Control lblCodigoPostal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbDirrecion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCodigoPostal;
 
         /// <summary>
-        /// Control txtDescripcion.
+        /// Control lblNumTarjeta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescripcion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNumTarjeta;
 
         /// <summary>
-        /// Control inCodigoPostal.
+        /// Control lblFechaExp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inCodigoPostal;
-
-        /// <summary>
-        /// Control inNumTarjeta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inNumTarjeta;
-
-        /// <summary>
-        /// Control Text1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Text1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFechaExp;
 
         /// <summary>
         /// Control imgLibro.
@@ -150,6 +132,15 @@ namespace Libreria_internacional.net.Vistas
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAutor;
 
         /// <summary>
+        /// Control lblFechaEntrega.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFechaEntrega;
+
+        /// <summary>
         /// Control lblPrecio.
         /// </summary>
         /// <remarks>
@@ -157,15 +148,6 @@ namespace Libreria_internacional.net.Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrecio;
-
-        /// <summary>
-        /// Control btnComprar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnComprar;
 
         /// <summary>
         /// Control btnRegresar.

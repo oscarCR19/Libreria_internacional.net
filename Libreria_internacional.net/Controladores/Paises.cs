@@ -7,12 +7,12 @@ using System.Linq;
 using System.Web;
 
 namespace Libreria_internacional.net.Controladores
-{
+{//Aqui se crean paises y provincias
     public class Paises
     {
 
         public List<Pais> ObtenerPaises()
-        {
+        {//Aqui se obtienen los paises desde la db
             List<Pais> paises = new List<Pais>();
 
             DataTable dt = DbPaises.fillDTStoreProcedure("spObtenerPaises", null);
@@ -31,7 +31,7 @@ namespace Libreria_internacional.net.Controladores
 
             return paises;
         }
-        //falta terminar 
+        //Aqui se obtienen las provincias desde la db 
         public List<Provincia> ObtenerProvincias()
         {
             List<Provincia> provincias = new List<Provincia>();

@@ -26,7 +26,17 @@
 </head>
 <body style="background-color: #f5f6fa; width: auto">
     <form id="form1" runat="server">
-                <div>
+        <div>
+            <!--Alerta-->
+            <div id="divAlert2" hidden="hidden" role="alert" runat="server">
+                <label id="lblAlert2" runat="server">hola</label>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+
             <div id="divEncabezado" runat="server" style="display: flexbox; text-align: right;">
                 <label style="margin-right: 10px;" for="">Bienvenidos a Libreria Internacional</label>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIngresar">
@@ -46,7 +56,7 @@
                                 <img src="/Assets/Logo/LOGO-LI-01.png" alt="" width="170" height="64" />
                             </a>
                         </div>
-                        <label runat="server" id="lblFecha">hola</label>
+
                     </div>
                     <!--Seccion de saludo y cart shoppin-->
 
@@ -101,7 +111,7 @@
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">Mis facturas</h5>
+                    <h5 id="offcanvasRightLabel">Facturas Pendientes de Pago</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="background-color: black"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -111,7 +121,7 @@
                             <div class="list-group">
                                 <abbr style="text-decoration: none" title="Presiona para realizar la compra">
                                     <div class="list-group">
-                                        <a href="AgregarFacturas.aspx" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a href="AgregarFacturas.aspx?id=<%# Eval("ID")%>&isbn=<%#Eval("ISBN") %>&titulo=<%#Eval("Titulo") %>&autor=<%#Eval("Autor") %>&precio=<%#Eval("Precio") %>&foto=<%#Eval("Foto") %>" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1">Factura:</h5>
                                                 <label style="margin-right: 90px"><%#Eval("Id") %></label>
@@ -133,6 +143,14 @@
                                                 <label style="margin-right: 200px">₡<%#Eval("Precio") %></label>
                                             </div>
                                         </a>
+                                        <abbr title="Dar click para eliminar">
+                                            <div class="col w-25" style="float: right; margin-right: 30px;">
+                                                <div>
+                                                    <a href="AgregarCarro.aspx?accion=borraCarrito&id=<%#Eval("Id") %>&sitio=Inicio.aspx" class="btn btn alert-danger">Eliminar
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </abbr>
 
 
                                     </div>
@@ -161,24 +179,20 @@
                             <div>
                                 <h4>Ingrese los datos que se solicita a continuacion:
                                 </h4>
-                                <label for="textNombre">Nombre</label>
-                                <input id="textNombre" type="text">
-                                <br />
-                                <label for="textApellido">Apellido</label>
-                                <input id="textApellido" type="text">
-                                <br />
-                                <label for="textEmail">Email</label>
-                                <input id="textEmail" type="email">
-                                <br />
                                 <label for="textUsuario">Usuario</label>
-                                <input id="textUsuario" type="text">
+                                <input id="textUsuario" runat="server" type="text" />
                                 <br />
                                 <label for="textContrasena">Contraseña</label>
-                                <input id="textContrasena" type="password">
+                                <input id="textContrasena" runat="server" type="password" />
+                                <br />
+                                <label for="textEmail">Email</label>
+                                <input id="textEmail" runat="server" type="email" />
+
+
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Registrar</button>
+                            <button id="btnRegistrar" runat="server" onserverclick="btnRegistrar_ServerClick" type="button" class="btn btn-primary">Registrar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 
                         </div>
@@ -239,8 +253,23 @@
                     </div>
 
                     <!--Espacio de trabajo-->
+
+
+                    <!--InputBusqueda-->
+                    <div id="divBusqueda" runat="server" style="margin-left:60px;">
+                        <div class="input-group mb-3 w-25">
+                            <input id="inputBusqueda" runat="server" type="text" class="form-control" placeholder="Por nombre o isbn" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                            <div class="input-group-append">
+                                <button id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick"   class="btn btn-info" type="button">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div class="container-fluid ml-3" style="margin-top: 1%">
                         <div class="row">
+
 
                             <!--RepetidorUno-->
                             <asp:Repeater ID="repLibros" runat="server">
@@ -266,11 +295,49 @@
                                             <hr />
                                             <div class="row">
                                                 <div class="col" style="width: 70%">
-                                                    <a id="btnComprar" href="microServicios.aspx?isnb=<%# Eval("ISBN") %>&titulo= <%# Eval("Titulo")%>&autor=<%# Eval("Autor") %>
-                                                        &precio=<%# Eval("Precio") %>"
+                                                    <a id="btnComprar" href="AgregarCarro.aspx?isnb=<%# Eval("ISBN") %>&titulo= <%# Eval("Titulo")%>&autor=<%# Eval("Autor") %>
+                                                        &precio=<%# Eval("Precio")%>&foto=<%# Eval("Foto")%>"
                                                         style="float: right;" class="btn btn-primary">Agregar  carrito</a>
                                                 </div>
 
+                                                <div class="col" style="width: 30%">
+
+                                                    <abbr title="Presionar para agregar a favoritos">
+                                                        <a id="btnFavoritos" href="AgregarFavoritos.aspx?accion=poner&isbn=<%# Eval("ISBN") %>" style="float: right">
+                                                            <img src="/Assets/Iconos/nofavorito.png" alt="" /></a></abbr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+
+                            <!--RepetidorDos-->
+                            <asp:Repeater ID="repLibros2" runat="server">
+                                <ItemTemplate>
+                                    <div class="card" style="width: 18rem; margin-left: 2%; margin-top: 1%">
+                                        <img src="<%# Eval("Foto") %>" class="card-img-top" style="width: 265px; height: 230px" />
+                                        <div class="card-body">
+
+                                            <label>ISBN:</label>
+                                            <h5 class="card-title"><%# Eval("ISBN") %></h5>
+                                            <label>Titulo:</label>
+                                            <p class="card-text"><%# Eval("Titulo") %></p>
+                                            <label>Autor:</label>
+                                            <strong class="card-text"><%# Eval("Autor") %></strong>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Precio: </label>
+                                                </div>
+                                                <div class="col" style="margin-right: 60px;">
+                                                    <h5 class="card-title">₡<%# Eval("Precio") %></h5>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col" style="width: 70%">
+                                                    <a id="btnComprar" runat="server" onserverclick="btnComprar_ServerClick" style="float: right;" class="btn btn-primary">Agregar  carrito</a>
+                                                </div>
                                                 <div class="col" style="width: 30%">
 
                                                     <abbr title="Presionar para agregar a favoritos">
@@ -283,8 +350,8 @@
                                 </ItemTemplate>
                             </asp:Repeater>
 
-                            <!--RepetidorDos-->
-                            <asp:Repeater ID="repLibros2" runat="server">
+                            <!--RepetidorTres-->
+                            <asp:Repeater ID="repLibros3" runat="server">
                                 <ItemTemplate>
                                     <div class="card" style="width: 18rem; margin-left: 2%; margin-top: 1%">
                                         <img src="<%# Eval("Foto") %>" class="card-img-top" style="width: 265px; height: 230px" />

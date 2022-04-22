@@ -5,8 +5,9 @@ using System.Web;
 
 namespace Libreria_internacional.net.Modelos
 {
-    public class LibroPorUsuario:Libro
+    public class LibroPorCarrito:Libro
     {
+        //Se da forma a los libros que se imprimen en el carro de compras
         public string User { get; set; }
         public string Id { get; set; }
         public DateTime FechaEmision { get; set; }

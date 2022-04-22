@@ -1,9 +1,10 @@
 
 
-**/.cache
+*.cache
+./Libreria_internacional.net/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 
 bin
 **/obj
 Properties
 .vs/
-
+/obj/

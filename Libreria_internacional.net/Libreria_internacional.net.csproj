@@ -91,22 +91,23 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Vistas\AgregarCarro.aspx" />
     <Content Include="Vistas\AgregarFacturas.aspx" />
+    <Content Include="Vistas\AgregarFavoritos.aspx" />
     <Content Include="Vistas\Inicio.aspx" />
-    <Content Include="Vistas\Favoritos.aspx" />
     <Content Include="Vistas\Perfil.aspx" />
+    <Content Include="Vistas\VerFacturas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controladores\FacturasLibros.cs" />
+    <Compile Include="Controladores\FacturasPorUsuarios.cs" />
     <Compile Include="Controladores\Libros.cs" />
-    <Compile Include="Controladores\LibrosPorUsuarios.cs" />
+    <Compile Include="Controladores\LibrosPorCarritos.cs" />
     <Compile Include="Controladores\Paises.cs" />
     <Compile Include="Controladores\Usuarios.cs" />
     <Compile Include="DB\DataBase.cs" />
     <Compile Include="DB\DbPaises.cs" />
-    <Compile Include="Modelos\FacturaLibro.cs" />
+    <Compile Include="Modelos\FacturaUsuario.cs" />
     <Compile Include="Modelos\Libro.cs" />
-    <Compile Include="Modelos\LibroPorUsuario.cs" />
+    <Compile Include="Modelos\LibroPorCarrito.cs" />
     <Compile Include="Modelos\Pais.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +125,13 @@
     <Compile Include="Vistas\AgregarFacturas.aspx.designer.cs">
       <DependentUpon>AgregarFacturas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\AgregarFavoritos.aspx.cs">
+      <DependentUpon>AgregarFavoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\AgregarFavoritos.aspx.designer.cs">
+      <DependentUpon>AgregarFavoritos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,19 +139,19 @@
     <Compile Include="Vistas\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Favoritos.aspx.cs">
-      <DependentUpon>Favoritos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Favoritos.aspx.designer.cs">
-      <DependentUpon>Favoritos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VerFacturas.aspx.cs">
+      <DependentUpon>VerFacturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\VerFacturas.aspx.designer.cs">
+      <DependentUpon>VerFacturas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

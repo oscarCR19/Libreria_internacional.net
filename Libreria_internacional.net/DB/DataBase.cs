@@ -10,7 +10,7 @@ namespace Libreria_internacional.net.DB
     public static class DataBase
     {
         const string servidor = @"DESKTOP-KME924O";
-        const string baseDatos = "Reservarnet";
+        const string baseDatos = "LibreriaInternacional";
         const string strConexion = "Data Source=" + servidor + ";Initial Catalog=" + baseDatos + ";Integrated Security=True";
         //
         public static DataTable fillDTStoreProcedure(string procedure, List<SqlParameter> param)

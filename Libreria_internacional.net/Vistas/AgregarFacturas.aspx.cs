@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Libreria_internacional.net.Vistas
@@ -13,46 +14,63 @@ namespace Libreria_internacional.net.Vistas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) { 
+            string accion = Request.QueryString["accion"];
+            string id = Request.QueryString["id"];
+            string titulo = Request.QueryString["titulo"];
+            string autor = Request.QueryString["autor"];
+            string precio = Request.QueryString["precio"];
+            string foto = Request.QueryString["foto"];
+            Usuario usuario = (Usuario)Session["Login"];
+
+            
+
+            // esto es para invocar el metodo para devolver el email
+            Usuarios email = new Usuarios();
+
+
+            lblAutor.InnerText = autor;
+            lblTitulo.InnerText = titulo;
+            lblPrecio.InnerText = precio;
+            lblUsuario.InnerText = usuario.User;
+            lblEmail.InnerText = email.getEmail(usuario).Email;
+            imgLibro.Attributes.Add("src", foto);
+
             List<Pais> listaPaises = new List<Pais>();
             listaPaises = ObtenerPaises();
 
-
-            for(int i = 0; i < listaPaises.Count; i++)
+            selectPais.Items.Add("Seleccionar");
+            // ciclo para llevar los paises
+            for (int i = 0; i < listaPaises.Count; i++)
             {
                 selectPais.Items.Add(listaPaises[i].Nombre);
             }
 
-            List<Provincia> listaProvincias = new List<Provincia>();
-            listaProvincias = ObtenerProvincias("36");
+            selectProvincia.Items.Add("Seleccionar");
 
-            if (selectPais.SelectedIndex.Equals(0))
+           
+
+
+            //marcarEntregadoDesdePerfil
+            if (accion == "entregado")
             {
-                InpPruebas.Attributes.Add("value","hola");
+                FacturaUsuario factura = new FacturaUsuario();
+                factura.Id= id;
+                FacturasPorUsuarios entregado = new FacturasPorUsuarios();
+                entregado.setFacturaEntregado(factura);
+                Response.Redirect("Perfil.aspx?mensaje=Se marcó factura como entregada");
+
             }
             
-
-            for (int i = 0; i < listaProvincias.Count; i++)
-            {
-                selectProvincia.Items.Add(listaProvincias[i].Nombre);
-            }
-                
-
-
-
-
-            InpPruebas.Attributes.Add("value", listaProvincias.Count.ToString());
-            }
-
         }
 
 
         public List<Pais> ObtenerPaises()
-        {   Paises paises= new Paises();
+        {
+            Paises paises = new Paises();
             List<Pais> listaPaises = new List<Pais>();
-            listaPaises=paises.ObtenerPaises(); 
-            
-            
+            listaPaises = paises.ObtenerPaises();
+
+
 
             return listaPaises;
 
@@ -65,9 +83,9 @@ namespace Libreria_internacional.net.Vistas
             provincias = provincia.ObtenerProvincias();
 
             List<Provincia> listaProvincia = new List<Provincia>();
-            for ( int i = 0; i < provincias.Count; i++)
+            for (int i = 0; i < provincias.Count; i++)
             {
-                if(provincias[i].Id_Pais==pais)
+                if (provincias[i].Id_Pais == pais)
                 {
                     listaProvincia.Add(provincias[i]);
                 }
@@ -79,12 +97,90 @@ namespace Libreria_internacional.net.Vistas
 
         }
 
-        protected void btnPais_ServerClick(object sender, EventArgs e)
+        public string ObtenerIdPais(string pais)
         {
-            
-            if (!IsPostBack)
+
+            List<Pais> listaPaises = new List<Pais>();
+            listaPaises = ObtenerPaises();
+            string id_pais = "";
+            //ciclo para obtener id pais
+            for (int i = 0; i < listaPaises.Count; i++)
             {
-                     }
+                if (listaPaises[i].Nombre == pais)
+                {
+                    id_pais = listaPaises[i].Id;
+                }
+            }
+
+            return id_pais;
+        }
+
+
+
+        protected void btnBuscarProv_ServerClick(object sender, EventArgs e)
+        {
+
+            string pais = selectPais.Value;
+            ObtenerIdPais(pais);
+            List<Provincia> listaProvincias = new List<Provincia>();
+            listaProvincias = ObtenerProvincias(ObtenerIdPais(pais));
+
+
+            //InpPruebas.Attributes.Add("value", Text1.Value);
+
+            // ciclo para llevar los provincias
+            for (int i = 0; i < listaProvincias.Count; i++)
+            {
+                selectProvincia.Items.Add(listaProvincias[i].Nombre);
+            }
+
+
+
+
+
+
+        }
+
+        protected void btnComprar_ServerClick(object sender, EventArgs e)
+        {
+            string id = Request.QueryString["id"];
+            string isbn = Request.QueryString["isbn"];
+            string titulo = Request.QueryString["titulo"];
+            string autor = Request.QueryString["autor"];
+            string precio = Request.QueryString["precio"];
+            string foto = Request.QueryString["foto"];
+            Usuario usuario = (Usuario)Session["Login"];
+            Usuarios email=new Usuarios();
+            
+            FacturaUsuario factura = new FacturaUsuario()
+            {   ISBN = isbn,
+                User = usuario.User,
+                Email = email.getEmail(usuario).Email.ToString(),
+                Titulo = titulo,
+                Autor = autor,
+                Precio = Convert.ToDouble(precio),
+                Foto = foto,
+                Pais = selectPais.Value,
+                Provincia = selectProvincia.Value,
+                Direccion = txtDescripcion.Value,
+                CodigoPostal = inCodigoPostal.Value,
+                NumeroTarjeta = inNumTarjeta.Value,
+                FechaExp = Text1.Value,
+                CodigoSeg = inCodigoPostal.Value,
+                FechaEmision = DateTime.Today,
+                Estado = "Pendiente"
+
+            };
+            FacturasPorUsuarios facturaFinal = new FacturasPorUsuarios();
+            facturaFinal.setFacturaFinal(factura);
+            LibrosPorCarritos quitarDeCarrito = new LibrosPorCarritos();
+            quitarDeCarrito.quitarLibroCarrito(Convert.ToInt32(id));
+            Response.Redirect("Inicio.aspx?mensaje=Compra realizada con éxito");
+        }
+
+        protected void btnRegresar_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Inicio.aspx");
         }
     }
 }
