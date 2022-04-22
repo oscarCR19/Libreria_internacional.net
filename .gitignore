@@ -1,7 +1,7 @@
 
 
 *.cache
-./Libreria_internacional.net/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Libreria_internacional.net/obj/
 
 bin
 **/obj
